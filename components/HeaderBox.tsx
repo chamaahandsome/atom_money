@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 const HeaderBox = ({ type = "title", title, subtext, user}: HeaderBoxProps) => {
   return (

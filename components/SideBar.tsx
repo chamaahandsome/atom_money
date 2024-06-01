@@ -17,7 +17,7 @@ const SideBar = ({user}: SideBarProps) => {
         <Link href='/'
         className="mb-12 cursor-pointer flex items-center gap-2">
             <Image 
-            src="/icons/logodraft2.png"
+            src="/icons/logodraft1.png"
             width={34}
             height={24}
             alt="Atom Money Logo"

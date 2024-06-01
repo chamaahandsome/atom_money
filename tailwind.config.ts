@@ -23,7 +23,7 @@ const config = {
         fill: {
           1: "rgba(255, 255, 255, 0.10)",
         },
-        bankGradient: "#0179FE",
+        bankGradient: "#30D9C8",
         indigo: {
           500: "#6172F3",
           700: "#3538CD",
@@ -52,6 +52,15 @@ const config = {
           700: "#175CD3",
           900: "#194185",
         },
+        aqua: {
+          25: "#E5F9F7",   // Very light aqua
+          100: "#B8EFE9",  // Light aqua
+          500: "#30D9C8",  // Base aqua color
+          600: "#28C1B1",  // Slightly darker than base
+          700: "#20A99A",  // Darker aqua
+          900: "#178178",  // Very dark aqua
+        },
+        
         sky: {
           1: "#F3F9FF",
         },
@@ -70,10 +79,9 @@ const config = {
         },
       },
       backgroundImage: {
-        "bank-gradient": "linear-gradient(90deg, #0179FE 0%, #4893FF 100%)",
-        "gradient-mesh": "url('/icons/gradient-mesh.svg')",
-        "bank-green-gradient":
-          "linear-gradient(90deg, #01797A 0%, #489399 100%)",
+        'bank-gradient': 'linear-gradient(90deg, #10564F 0%, #21B6A8 33%, #30D9C8 66%, #75E6DA 100%)',
+        'gradient-mesh': "url('/icons/turquoisebg2.jpeg')",
+        'bank-green-gradient': 'linear-gradient(90deg, #10564F 0%, #30D9C8 50%, #75E6DA 100%)',
       },
       boxShadow: {
         form: "0px 1px 2px 0px rgba(16, 24, 40, 0.05)",

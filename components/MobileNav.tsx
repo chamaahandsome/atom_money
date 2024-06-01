@@ -3,12 +3,15 @@
 import React from 'react';
 import {
     Sheet,
-    SheetContent,
-    SheetDescription,
-    SheetHeader,
-    SheetTitle,
+    SheetPortal,
+    SheetOverlay,
     SheetTrigger,
-    SheetClose
+    SheetClose,
+    SheetContent,
+    SheetHeader,
+    SheetFooter,
+    SheetTitle,
+    SheetDescription,
   } from "@/components/ui/sheet";
 import Image from 'next/image';
 import Link from 'next/link';
@@ -37,7 +40,7 @@ const MobileNav = ( {user: MobileNavProps} ) => {
             <Link href='/'
                 className="cursor-pointer flex items-center gap-1 px-4">
                     <Image 
-                    src="/icons/logodraft2.png"
+                    src="/icons/logodraft1.png"
                     width={34}
                     height={24}
                     alt="Atom Money Logo"
@@ -74,8 +77,10 @@ const MobileNav = ( {user: MobileNavProps} ) => {
                                 )
                             })
                         }
+                        USER
                     </nav>
                 </SheetClose>
+                FOOTER
             </div>
 
                 {sidebarLinks.map((item) => {
