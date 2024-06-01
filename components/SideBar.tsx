@@ -1,11 +1,11 @@
 "use client";
 
-import React from 'react'
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { sidebarLinks } from '../constants';
 import { usePathname } from 'next/navigation';
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
 const SideBar = ({user}: SideBarProps) => {
 
@@ -17,11 +17,11 @@ const SideBar = ({user}: SideBarProps) => {
         <Link href='/'
         className="mb-12 cursor-pointer flex items-center gap-2">
             <Image 
-            src="/icons/logo.svg"
+            src="/icons/logodraft2.png"
             width={34}
-            height={34}
+            height={24}
             alt="Atom Money Logo"
-            className='size-[24px] max-xl:size-14'
+            className='size-[54px] max-xl:size-34'
             />
             <h1 className='sidebar-logo'>Atom Money</h1>
         </Link>
