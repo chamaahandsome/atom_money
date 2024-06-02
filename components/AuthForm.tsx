@@ -17,14 +17,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import CustomInput from './CustomInput';
 import { authFormSchema } from "@/lib/utils";
 import { Loader2 } from "lucide-react";
-import SignUp from '../app/(Auth)/Sign-up/page';
 import { useRouter } from 'next/navigation';
-
-
+import { signIn, signUp } from "@/lib/actions/user.actions";
 
 
 const AuthForm = ({type}: {type: string}) => {
@@ -52,19 +49,19 @@ const AuthForm = ({type}: {type: string}) => {
         // Sign up with Appwrite & Create Plaid Link token
             if(type === "sign-up"){
                
-                        // const newUser = await SignUp(data);
+                        const newUser = await signUp(data);
 
-                        // setUser(newUser);
+                        setUser(newUser);
                     
                 }
   
                 if(type === "sign-in"){
-                //     const response = await signIn ({
-                //         email: data.email,
-                //         password: data.password
-                //     })
+                    const response = await signIn ({
+                        email: data.email,
+                        password: data.password
+                    })
 
-                //    if(response) router.push('/')
+                   if(response) router.push('/')
                 }
         } catch (error) {
             console.log(error);
