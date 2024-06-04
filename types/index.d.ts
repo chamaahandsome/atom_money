@@ -224,6 +224,10 @@ declare interface SideBarProps {
   user: User;
 }
 
+declare interface WalletProps {
+  user: User;
+}
+
 declare interface RecentTransactionsProps {
   accounts: Account[];
   transactions: Transaction[];
