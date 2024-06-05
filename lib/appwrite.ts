@@ -22,7 +22,7 @@ export async function createSessionClient() {
       return new Account(client);
     },
   };
-}
+};
 
 export async function createAdminClient() {
   const client = new Client()
@@ -41,4 +41,4 @@ export async function createAdminClient() {
         return new Users(client);
     }
   };
-}
+};
