@@ -2,7 +2,7 @@
 import { Configuration, PlaidApi, PlaidEnvironments } from 'plaid';
 
 
-const configurations = new Configuration ({
+const configuration = new Configuration ({
     basePath: PlaidEnvironments.sandbox,
     baseOptions: {
         headers: {
@@ -12,4 +12,4 @@ const configurations = new Configuration ({
     }
 });
 
-export const plaidClient = new PlaidApi(configurations);
+export const plaidClient = new PlaidApi(configuration);
