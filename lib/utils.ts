@@ -6,7 +6,7 @@ import { z } from "zod";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
-}
+};
 
 // FORMAT DATE TIME
 export const formatDateTime = (dateString: Date) => {
@@ -74,7 +74,7 @@ export function formatAmount(amount: number): string {
   });
 
   return formatter.format(amount);
-}
+};
 
 export const parseStringify = (value: any) => JSON.parse(JSON.stringify(value));
 
@@ -86,7 +86,7 @@ interface UrlQueryParams {
   params: string;
   key: string;
   value: string;
-}
+};
 
 export function formUrlQuery({ params, key, value }: UrlQueryParams) {
   const currentUrl = qs.parse(params);
@@ -100,7 +100,7 @@ export function formUrlQuery({ params, key, value }: UrlQueryParams) {
     },
     { skipNull: true }
   );
-}
+};
 
 export function getAccountTypeColors(type: AccountTypes) {
   switch (type) {
@@ -128,7 +128,7 @@ export function getAccountTypeColors(type: AccountTypes) {
         subText: "text-green-700",
       };
   }
-}
+};
 
 export function countTransactionCategories(
   transactions: Transaction[]
@@ -167,7 +167,7 @@ export function countTransactionCategories(
   aggregatedCategories.sort((a, b) => b.count - a.count);
 
   return aggregatedCategories;
-}
+};
 
 export function extractCustomerIdFromUrl(url: string) {
   // Split the URL string by '/'
@@ -177,15 +177,15 @@ export function extractCustomerIdFromUrl(url: string) {
   const customerId = parts[parts.length - 1];
 
   return customerId;
-}
+};
 
 export function encryptId(id: string) {
   return btoa(id);
-}
+};
 
 export function decryptId(id: string) {
   return atob(id);
-}
+};
 
 export const getTransactionStatus = (date: Date) => {
   const today = new Date();
@@ -196,16 +196,16 @@ export const getTransactionStatus = (date: Date) => {
 };
 
 export const authFormSchema = (type: string) => z.object({
-  // sign-up
-  firstName: type === "sign-in" ? z.string().optional() : z.string().min(3),
-  lastName: type === "sign-in" ? z.string().optional() : z.string().min(3),
-  address1: type === "sign-in" ? z.string().optional() : z.string().max(50),
-  city: type === "sign-in" ? z.string().optional() : z.string().max(50),
-  state: type === "sign-in" ? z.string().optional() : z.string().min(2).max(2),
-  postalCode: type === "sign-in" ? z.string().optional() : z.string().min(3).max(10),
-  dateOfBirth: type === "sign-in" ? z.string().optional() : z.string().min(3),
-  ssn: type === "sign-in" ? z.string().optional(): z.string().min(4).max(11),
-  // sign-in & sign-up
+  // sign up
+  firstName: type === 'sign-in' ? z.string().optional() : z.string().min(3),
+  lastName: type === 'sign-in' ? z.string().optional() : z.string().min(3),
+  address1: type === 'sign-in' ? z.string().optional() : z.string().max(50),
+  city: type === 'sign-in' ? z.string().optional() : z.string().max(50),
+  state: type === 'sign-in' ? z.string().optional() : z.string().min(2).max(2),
+  postalCode: type === 'sign-in' ? z.string().optional() : z.string().min(3).max(6),
+  dateOfBirth: type === 'sign-in' ? z.string().optional() : z.string().min(3),
+  ssn: type === 'sign-in' ? z.string().optional() : z.string().min(3),
+  // both
   email: z.string().email(),
   password: z.string().min(8),
-})
+});

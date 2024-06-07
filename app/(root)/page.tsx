@@ -2,7 +2,7 @@ import React from 'react';
 import HeaderBox from '../../components/HeaderBox';
 import TotalBalanceBox from '../../components/TotalBalanceBox';
 import RightSidebar from '../../components/RightSidebar';
-import { getLoggedInUser } from '../../lib/Actions/user.actions';
+import { getLoggedInUser } from '../../lib/actions/user.actions';
 
 const HomePage = async () => {
 const loggedIn = await getLoggedInUser();

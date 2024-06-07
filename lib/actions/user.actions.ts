@@ -50,7 +50,7 @@ export const signUp = async ({ password, ...userData }: SignUpParams) => {
       const dwollaCustomerUrl = await createDwollaCustomer({
         ...userData,
         type: 'personal'
-      });
+      })
   
       if(!dwollaCustomerUrl) throw new Error('Error creating Dwolla customer');
   
@@ -81,7 +81,7 @@ export const signUp = async ({ password, ...userData }: SignUpParams) => {
     } catch (error) {
       console.error('Error', error);
     }
-  }
+  };
 
 
 export async function getLoggedInUser() {
@@ -107,26 +107,25 @@ export const logoutAccount = async () => {
     }
   };
 
-export  const createLinkToken = async ({user: User}) => {
-     try {
-        const tokenParams = {
-            user: {
-                client_user_id: user.$id
-            },
-            client_name: `${user.firstName} ${user.lastName}`,
-            products: ["auth"] as Products[],
-            language: "en",
-            country_codes: ["US"] as CountryCode[],
-        }
-
-        const response = await plaidClient.linkTokenCreate(tokenParams);
-
-        return parseStringify({linkToken: response.data.link_token});
-
-     } catch (error) {
-        console.log(error);   
-     }
-  } ;
+  export const createLinkToken = async (user: User) => {
+    try {
+      const tokenParams = {
+        user: {
+          client_user_id: user.$id
+        },
+        client_name: `${user.firstName} ${user.lastName}`,
+        products: ['auth'] as Products[],
+        language: 'en',
+        country_codes: ['US'] as CountryCode[],
+      }
+  
+      const response = await plaidClient.linkTokenCreate(tokenParams);
+  
+      return parseStringify({ linkToken: response.data.link_token })
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   export const createBankAccount = async ({
     userId,

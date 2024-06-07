@@ -179,6 +179,11 @@ declare interface PlaidLinkProps {
   dwollaCustomerId?: string;
 }
 
+declare interface CreateLinkTokenParams {
+  user: User;
+}
+
+
 // declare type User = sdk.Models.Document & {
 //   accountId: string;
 //   email: string;
