@@ -29,7 +29,7 @@ const SideBar = ({user}: SideBarProps) => {
 
         {sidebarLinks.map((item) => {
 
-            const isActive = pathname === item.route || pathname.startsWith(`${item.route}/`)
+            const isActive = pathname === item.route || pathname.startsWith(`${item.route}/`);
 
             return (
                 <Link href={item.route} key={item.label}
@@ -61,6 +61,6 @@ const SideBar = ({user}: SideBarProps) => {
 
     </section>
   )
-}
+};
 
 export default SideBar;

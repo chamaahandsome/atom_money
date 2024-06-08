@@ -6,6 +6,6 @@ const TransactionHistory = () => {
       TransactionHistory
     </div>
   )
-}
+};
 
 export default TransactionHistory;

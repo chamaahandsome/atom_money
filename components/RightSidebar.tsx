@@ -17,14 +17,15 @@ const RightSidebar = ({user, transactions, banks}: RightSidebarProps) => {
             </div>
             <div className='profile-details'>
                 <h1 className='profile-name'>
-                    {user.name}
+                {user.firstName} {user.lastName}
                 </h1>
                 <p className='profile-email'>
-                    {user && user.email} 
+                    {user.email} 
                 </p>
             </div>
         </div>
       </section>
+
       <section className='banks'>
         <div className='flex w-full justify-between'>
             <h2 className='header-2'> My Banks </h2>
@@ -46,7 +47,7 @@ const RightSidebar = ({user, transactions, banks}: RightSidebarProps) => {
                     <BankCard 
                     key={banks[0].$id}
                     account={banks[0]}
-                    userName={user.name}
+                    userName={`${user.firstName} ${user.lastName}`}
                     showBalance={false}
                     />
                 </div>
@@ -55,7 +56,7 @@ const RightSidebar = ({user, transactions, banks}: RightSidebarProps) => {
                         <BankCard 
                         key={banks[1].$id}
                         account={banks[1]}
-                        userName={user.name}
+                        userName={`${user.firstName} ${user.lastName}`}
                         showBalance={false}
                         />
                     </div>
@@ -65,6 +66,6 @@ const RightSidebar = ({user, transactions, banks}: RightSidebarProps) => {
       </section>
     </aside>
   )
-}
+};
 
 export default RightSidebar;

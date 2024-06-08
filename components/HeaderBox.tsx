@@ -14,6 +14,6 @@ const HeaderBox = ({ type = "title", title, subtext, user}: HeaderBoxProps) => {
       <p className='header-box-subtext'>{subtext}</p>
     </div>
   )
-}
+};
 
 export default HeaderBox;

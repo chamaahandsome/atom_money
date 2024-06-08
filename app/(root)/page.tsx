@@ -36,6 +36,6 @@ const loggedIn = await getLoggedInUser();
 
     </section>
   )
-}
+};
 
 export default HomePage;

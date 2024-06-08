@@ -6,6 +6,6 @@ const MyBanks = () => {
       MyBanks
     </div>
   )
-}
+};
 
 export default MyBanks;

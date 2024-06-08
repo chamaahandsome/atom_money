@@ -10,6 +10,6 @@ const SignUp = async () => {
             <AuthForm type="sign-up"/>
     </section>
     )
-}
+};
 
 export default SignUp;

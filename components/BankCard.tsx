@@ -56,6 +56,6 @@ const BankCard = ({account, userName, showBalance=true}: CreditCardProps) => {
       {/* Copy Card Numbers */}
     </div>
   )
-}
+};
 
 export default BankCard;

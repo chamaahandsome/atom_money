@@ -23,7 +23,7 @@ const TotalBalanceBox = ({accounts = [], totalBanks, totalCurrentBalance }: Tota
       </div>
     </section>
   )
-}
+};
 
 export default TotalBalanceBox;
 

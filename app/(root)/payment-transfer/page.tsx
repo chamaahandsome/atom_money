@@ -6,6 +6,6 @@ const PaymentTransfer = () => {
       PaymentTransfer
     </div>
   )
-}
+};
 
 export default PaymentTransfer;

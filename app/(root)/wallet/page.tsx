@@ -6,6 +6,6 @@ const Wallet = () => {
       Wallet
     </div>
   )
-}
+};
 
 export default Wallet;

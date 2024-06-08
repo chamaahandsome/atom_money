@@ -16,6 +16,6 @@ const AnimatedCounter = ({amount}: {amount: number}) => {
         />
     </div>
   )
-}
+};
 
 export default AnimatedCounter;
