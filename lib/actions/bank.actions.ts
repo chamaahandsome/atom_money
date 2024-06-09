@@ -129,27 +129,89 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
 };
 
 // Get bank info
-export const getInstitution = async ({
-  institutionId,
-}: getInstitutionProps) => {
+// export const getInstitution = async ({
+//   institutionId,
+// }: getInstitutionProps) => {
+//   try {
+//     const institutionResponse = await plaidClient.institutionsGetById({
+//       institution_id: institutionId,
+//       country_codes: ["US"] as CountryCode[],
+//     });
+
+//     const intitution = institutionResponse.data.institution;
+
+//     return parseStringify(intitution);
+//   } catch (error) {
+//     console.error("An error occurred while getting the accounts:", error);
+//   }
+// };
+
+// // Get transactions
+// export const getTransactions = async ({
+//   accessToken,
+// }: getTransactionsProps) => {
+//   let hasMore = true;
+//   let transactions: any = [];
+
+//   try {
+//     // Iterate through each page of new transaction updates for item
+//     while (hasMore) {
+//       const response = await plaidClient.transactionsSync({
+//         access_token: accessToken,
+//       });
+
+//       const data = response.data;
+
+//       transactions = response.data.added.map((transaction) => ({
+//         id: transaction.transaction_id,
+//         name: transaction.name,
+//         paymentChannel: transaction.payment_channel,
+//         type: transaction.payment_channel,
+//         accountId: transaction.account_id,
+//         amount: transaction.amount,
+//         pending: transaction.pending,
+//         category: transaction.category ? transaction.category[0] : "",
+//         date: transaction.date,
+//         image: transaction.logo_url,
+//       }));
+
+//       hasMore = data.has_more;
+//     }
+
+//     return parseStringify(transactions);
+//   } catch (error) {
+//     console.error("An error occurred while getting the accounts:", error);
+//   }
+// };
+
+const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+
+const MAX_RETRIES = 5;
+
+// Get bank info
+export const getInstitution = async ({ institutionId }: getInstitutionProps, retry = 0) => {
   try {
     const institutionResponse = await plaidClient.institutionsGetById({
       institution_id: institutionId,
       country_codes: ["US"] as CountryCode[],
     });
 
-    const intitution = institutionResponse.data.institution;
+    const institution = institutionResponse.data.institution;
 
-    return parseStringify(intitution);
+    return parseStringify(institution);
   } catch (error) {
+    if (error.response && error.response.status === 429 && retry < MAX_RETRIES) {
+      // Wait for 2^retry * 100 milliseconds and then retry the request
+      await delay(Math.pow(2, retry) * 100);
+      return getInstitution({ institutionId }, retry + 1);
+    }
+
     console.error("An error occurred while getting the accounts:", error);
   }
 };
 
 // Get transactions
-export const getTransactions = async ({
-  accessToken,
-}: getTransactionsProps) => {
+export const getTransactions = async ({ accessToken }: getTransactionsProps, retry = 0) => {
   let hasMore = true;
   let transactions: any = [];
 
@@ -167,19 +229,19 @@ export const getTransactions = async ({
         name: transaction.name,
         paymentChannel: transaction.payment_channel,
         type: transaction.payment_channel,
-        accountId: transaction.account_id,
-        amount: transaction.amount,
-        pending: transaction.pending,
-        category: transaction.category ? transaction.category[0] : "",
-        date: transaction.date,
-        image: transaction.logo_url,
       }));
 
-      hasMore = data.has_more;
+      hasMore = data.hasMore;
     }
 
-    return parseStringify(transactions);
+    return transactions;
   } catch (error) {
-    console.error("An error occurred while getting the accounts:", error);
+    if (error.response && error.response.status === 429 && retry < MAX_RETRIES) {
+      // Wait for 2^retry * 100 milliseconds and then retry the request
+      await delay(Math.pow(2, retry) * 100);
+      return getTransactions({ accessToken }, retry + 1);
+    }
+
+    console.error("An error occurred while getting the transactions:", error);
   }
 };
