@@ -179,6 +179,7 @@ export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
     console.error("An error occurred while getting the account:", error);
   }
 };
+
 // export const getAccount = async ({ appwriteItemId }: getAccountProps) => {
 //   try {
 //     // get bank from db
