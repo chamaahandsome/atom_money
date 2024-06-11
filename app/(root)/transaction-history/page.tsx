@@ -5,7 +5,8 @@ import TransactionsTable from '@/components/TransactionsTable';
 import { getAccount, getAccounts } from '@/lib/actions/bank.actions';
 import { getLoggedInUser } from '@/lib/actions/user.actions';
 import { formatAmount } from '@/lib/utils';
-import React from 'react'
+import React from 'react';
+import Link from 'next/link';
 
 const TransactionHistory = async ({ searchParams: { id, page }}:SearchParamProps) => {
   const currentPage = Number(page as string) || 1;
@@ -51,11 +52,12 @@ const currentTransactions = account?.transactions.slice(
               ●●●● ●●●● ●●●● {account?.data.mask}
             </p>
           </div>
-          
+
           <div className='transactions-account-balance'>
             <p className="text-14">Current balance</p>
-            <p className="text-24 text-center font-bold">{formatAmount(account?.data.currentBalance)}</p>
+            <p className="text-24 text-center font-bold">{account?.data && formatAmount(account.data.currentBalance)}</p>
           </div>
+
         </div>
 
         <section className="flex w-full flex-col gap-6">

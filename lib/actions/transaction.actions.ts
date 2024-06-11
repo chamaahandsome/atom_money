@@ -30,9 +30,41 @@ export const createTransaction = async (transaction: CreateTransactionProps) => 
   }
 };
 
-// export const getTransactionsByBankId = async ({bankId}: getTransactionsByBankIdProps) => {
+export const getTransactionsByBankId = async ({bankId}: getTransactionsByBankIdProps) => {
+  try {
+    const { database } = await createAdminClient();
+
+    const senderTransactions = await database.listDocuments(
+      DATABASE_ID!,
+      TRANSACTION_COLLECTION_ID!,
+      [Query.equal('senderBankId', bankId)],
+    );
+
+    const receiverTransactions = await database.listDocuments(
+      DATABASE_ID!,
+      TRANSACTION_COLLECTION_ID!,
+      [Query.equal('receiverBankId', bankId)],
+    );
+
+    const transactions = {
+      total: senderTransactions.total + receiverTransactions.total,
+      documents: [
+        ...senderTransactions.documents, 
+        ...receiverTransactions.documents,
+      ]
+    };
+ 
+    return parseStringify(transactions);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// export const getTransactionsByBankId = async ({ bankId }: getTransactionsByBankIdProps) => {
 //   try {
 //     const { database } = await createAdminClient();
+
+//     console.log(`Fetching transactions for bankId: ${bankId}`);
 
 //     const senderTransactions = await database.listDocuments(
 //       DATABASE_ID!,
@@ -40,11 +72,15 @@ export const createTransaction = async (transaction: CreateTransactionProps) => 
 //       [Query.equal('senderBankId', bankId)],
 //     );
 
+//     console.log("Sender Transactions:", senderTransactions);
+
 //     const receiverTransactions = await database.listDocuments(
 //       DATABASE_ID!,
 //       TRANSACTION_COLLECTION_ID!,
 //       [Query.equal('receiverBankId', bankId)],
 //     );
+
+//     console.log("Receiver Transactions:", receiverTransactions);
 
 //     const transactions = {
 //       total: senderTransactions.total + receiverTransactions.total,
@@ -54,50 +90,14 @@ export const createTransaction = async (transaction: CreateTransactionProps) => 
 //       ]
 //     };
 
+//     console.log("Merged Transactions:", transactions);
+
 //     return parseStringify(transactions);
 //   } catch (error) {
-//     console.log(error);
+//     console.log("An error occurred while getting transactions by bank ID:", error);
+//     return {
+//       total: 0,
+//       documents: []
+//     };
 //   }
 // };
-
-export const getTransactionsByBankId = async ({ bankId }: getTransactionsByBankIdProps) => {
-  try {
-    const { database } = await createAdminClient();
-
-    console.log(`Fetching transactions for bankId: ${bankId}`);
-
-    const senderTransactions = await database.listDocuments(
-      DATABASE_ID!,
-      TRANSACTION_COLLECTION_ID!,
-      [Query.equal('senderBankId', bankId)],
-    );
-
-    console.log("Sender Transactions:", senderTransactions);
-
-    const receiverTransactions = await database.listDocuments(
-      DATABASE_ID!,
-      TRANSACTION_COLLECTION_ID!,
-      [Query.equal('receiverBankId', bankId)],
-    );
-
-    console.log("Receiver Transactions:", receiverTransactions);
-
-    const transactions = {
-      total: senderTransactions.total + receiverTransactions.total,
-      documents: [
-        ...senderTransactions.documents, 
-        ...receiverTransactions.documents,
-      ]
-    };
-
-    console.log("Merged Transactions:", transactions);
-
-    return parseStringify(transactions);
-  } catch (error) {
-    console.log("An error occurred while getting transactions by bank ID:", error);
-    return {
-      total: 0,
-      documents: []
-    };
-  }
-};
