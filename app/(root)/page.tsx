@@ -43,7 +43,7 @@ const HomePage = async ({searchParams: {id, page}}: SearchParamProps) => {
           appwriteItemId={appwriteItemId}
           page={currentPage}
         />
-
+          
         </div>
 
         <RightSidebar 
