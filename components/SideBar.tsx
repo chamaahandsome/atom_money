@@ -22,10 +22,10 @@ const SideBar = ({user}: SideBarProps) => {
             src="/icons/logodraft1.png"
             width={34}
             height={24}
-            alt="Atom Money Logo"
+            alt="Broh Logo"
             className='size-[54px] max-xl:size-34'
             />
-            <h1 className='sidebar-logo'>Atom Money</h1>
+            <h1 className='sidebar-logo'>Broh</h1>
         </Link>
 
         {sidebarLinks.map((item) => {

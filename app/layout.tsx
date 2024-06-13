@@ -11,8 +11,8 @@ const ibmPlexSerif = IBM_Plex_Serif({
 });
 
 export const metadata: Metadata = {
-  title: "Atom Money",
-  description: "Atom Money is a personal finance app that helps you manage your money.",
+  title: "Welcome Broh",
+  description: "Broh is a personal finance app that helps you manage your money.",
   icons: {
     icon: "/icons/logos.svg"
   }

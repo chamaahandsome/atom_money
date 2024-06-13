@@ -26,9 +26,9 @@ const HomePage = async ({searchParams: {id, page}}: SearchParamProps) => {
           <header className='home-header'>
               <HeaderBox
               type="greeting"
-              title="Welcome to Atom"
+              title="Welcome to Broh"
               user={loggedIn?.firstName || "Guest"}
-              subtext="Your personal finance assistant"
+              subtext="We got you!"
               />
               <TotalBalanceBox 
               accounts={accountsData}
@@ -78,7 +78,7 @@ export default HomePage;
 //         <header className='home-header'>
 //           <HeaderBox
 //             type="greeting"
-//             title="Welcome to Atom"
+//             title="Welcome to Broh"
 //             user={loggedIn?.firstName || "Guest"}
 //             subtext="Your personal finance assistant"
 //           />

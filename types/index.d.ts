@@ -18,6 +18,7 @@ declare type SignUpParams = {
   ssn: string;
   email: string;
   password: string;
+  phoneNumber: string;
 };
 
 declare type LoginUser = {
@@ -40,6 +41,7 @@ declare type User = {
   postalCode: string;
   dateOfBirth: string;
   ssn: string;
+  phoneNumber: string;
 };
 
 declare type NewUserParams = {
@@ -135,6 +137,20 @@ declare type NewDwollaCustomerParams = {
   postalCode: string;
   dateOfBirth: string;
   ssn: string;
+};
+
+declare type NewRapydCustomerParams = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  type: string;
+  address1: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  dateOfBirth: string;
+  ssn: string;
+  phoneNumber: string;
 };
 
 declare interface CreditCardProps {

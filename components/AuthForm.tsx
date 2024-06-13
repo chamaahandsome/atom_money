@@ -59,7 +59,8 @@ const AuthForm = ({ type }: { type: string }) => {
                 dateOfBirth: data.dateOfBirth!,
                 ssn: data.ssn!,
                 email: data.email,
-                password: data.password
+                password: data.password,
+                phoneNumber: data.phoneNumber
             };
                
                 const newUser = await signUp(userData);
@@ -93,9 +94,9 @@ const AuthForm = ({ type }: { type: string }) => {
                     src="/icons/logodraft1.png"
                     width={64}
                     height={64}
-                    alt="Atom Money Logo"
+                    alt="Broh Logo"
                     />
-                    <h1 className='text-26 font-ibm-plex-serif font-bold text-black-1'>Atom Money</h1>
+                    <h1 className='text-26 font-ibm-plex-serif font-bold text-black-1'>Broh</h1>
             </Link>
             <div className='flex flex-col gap-5 md:gap-3'>
                 <h1 className='text-24 lg:text-36 font-semibold text-gray-900'>
@@ -138,9 +139,9 @@ const AuthForm = ({ type }: { type: string }) => {
                     <CustomInput control={form.control} name='dateOfBirth' label="Date of Birth" placeholder='YYYY-MM-DD' />
                     <CustomInput control={form.control} name='ssn' label="SSN" placeholder='Example: 1234' />
                   </div>
+                  <CustomInput control={form.control} name='phoneNumber' label="Phone Number" placeholder='Enter your phone number' />
                 </>
               )}
-
               <CustomInput control={form.control} name='email' label="Email" placeholder='Enter your email' />
 
               <CustomInput control={form.control} name='password' label="Password" placeholder='Enter your password' />
